@@ -1,0 +1,15 @@
+{
+  "${ModID}:AlchemistPack": {
+    "TEXT": [
+      "Alchemist",
+      "Obtain and synergize with lots of potions, even turning your cards into potions to save for later.",
+      "wavewhyse☆"
+    ]
+  },
+  "${ModID}:AlchemistPackHat": {
+    "TEXT": [
+      "You have mastered the alchemical arts. Nothing cannot be put into liquid form.",
+      "Lab Goggles"
+    ]
+  }
+}

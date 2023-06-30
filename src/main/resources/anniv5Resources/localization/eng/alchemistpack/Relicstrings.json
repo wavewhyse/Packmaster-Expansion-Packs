@@ -1,0 +1,9 @@
+{
+  "${ModID}:AnarchistsCookbook": {
+    "NAME": "Anarchist's Cookbook",
+    "FLAVOR": "Every good household needs a good cookbook.",
+    "DESCRIPTIONS": [
+      "At the start of combat, obtain a #y${ModID}:Grenade."
+    ]
+  }
+}

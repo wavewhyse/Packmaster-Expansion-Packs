@@ -1,0 +1,18 @@
+{
+  "${ModID}:AnarchyPower": {
+    "NAME": "Anarchy",
+    "DESCRIPTIONS": ["#b%d extra Potion Slot.", "#b%d extra Potion Slots.", " (salvaged)"]
+  },
+  "${ModID}:BombLauncherPower": {
+    "NAME": "Bomb Launcher",
+    "DESCRIPTIONS": ["The next potion you use is used twice.", "The next #b%d potions you use are used twice."]
+  },
+  "${ModID}:ChemistryPower": {
+    "NAME": "Chemistry",
+    "DESCRIPTIONS": ["When you use a Potion, draw #b%d card.","When you use a Potion, draw #b%d cards."]
+  },
+  "${ModID}:ExtraCompartmentPower": {
+    "NAME": "Extra Compartment",
+    "DESCRIPTIONS": ["#b%d extra Potion Slot this turn.", "#b%d extra Potion Slots this turn.", " (salvaged)"]
+  }
+}

@@ -1,0 +1,54 @@
+package thePackmaster.powers.alchemistpack;
+
+import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import thePackmaster.powers.AbstractPackmasterPower;
+
+import static thePackmaster.SpireAnniversary5Mod.makeID;
+
+public class BombLauncherPower extends AbstractPackmasterPower implements CloneablePowerInterface {
+    public static final String POWER_ID = makeID(BombLauncherPower.class.getSimpleName());
+    public static final String NAME = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).NAME;
+    public static final String[] DESCRIPTIONS = CardCrawlGame.languagePack.getPowerStrings(POWER_ID).DESCRIPTIONS;
+
+    public BombLauncherPower(AbstractCreature owner, int amount) {
+        super(POWER_ID,NAME, PowerType.BUFF, false, owner, amount);
+    }
+
+    public void onPotionUse(AbstractPotion pot, AbstractCreature target) {
+        flash();
+        pot.use(target);
+        if (amount <= 1)
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        else
+            addToBot(new ReducePowerAction(owner, owner, this, 1));
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (isPlayer)
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+    }
+
+    @Override
+    public AbstractPower makeCopy() {
+        return new BombLauncherPower(this.owner, this.amount);
+    }
+
+    @Override
+    public void updateDescription() {
+        if (amount == 1)
+            description = DESCRIPTIONS[0];
+        else
+            description = String.format(DESCRIPTIONS[1], amount);
+    }
+}
+
+
+
+

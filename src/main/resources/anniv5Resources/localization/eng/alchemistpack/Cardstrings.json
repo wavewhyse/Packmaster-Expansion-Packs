@@ -1,0 +1,45 @@
+{
+  "${ModID}:AlchemistryImprov": {
+    "NAME": "Alchemistry Improv",
+    "DESCRIPTION": "Obtain an ${ModID}:Acid_Bomb. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain a Potion Slot for this turn. NL Obtain an ${ModID}:Acid_Bomb. NL Exhaust."
+  },
+  "${ModID}:Anarchy": {
+    "NAME": "Anarchy",
+    "DESCRIPTION": "{@@}Gain !M! Potion Slot{!M!|>1=s} for the rest of combat. NL Fill all your empty Potion Slots with ${ModID}:Grenades."
+  },
+  "${ModID}:BombLauncher": {
+    "NAME": "Bomb Launcher",
+    "DESCRIPTION": "{@@}The next {!M!|1=potion|@=!M! potions} you use this turn {!M!|1=is|@=are} used twice."
+  },
+  "${ModID}:BottleWill": {
+    "NAME": "Bottle Will",
+    "DESCRIPTION": "{@@}Obtain a potion that gains X{!Upgrades!|>0=+1} [E]. NL Exhaust."
+  },
+  "${ModID}:Chemistry": {
+    "NAME": "Chemistry",
+    "DESCRIPTION": "{@@}Whenever you use a potion, draw !M! card{!M!|>1=s}."
+  },
+  "${ModID}:Distill": {
+    "NAME": "Distill",
+    "DESCRIPTION": "Ethereal. NL {@@}Exhaust a card of cost X{!Upgrades!|<1=-1} or less and obtain a potion with its effects. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["Distill"]
+  },
+  "${ModID}:ExtraCompartment": {
+    "NAME": "Extra Compartment",
+    "DESCRIPTION": "Gain 1 Potion Slot for this turn. NL Obtain a ${ModID}:Grenade. NL Exhaustive !stslib:ex!."
+  },
+  "${ModID}:Forge": {
+    "NAME": "Forge",
+    "DESCRIPTION": "Deal !D! damage. NL Obtain a *Blessing *Of *The *Forge. NL Exhaust."
+  },
+  "${ModID}:TheBigOne": {
+    "NAME": "The Big One",
+    "DESCRIPTION": "Ethereal. NL Obtain a ${ModID}:Mini-Nuke. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Obtain a ${ModID}:Mini-Nuke. NL Exhaust."
+  },
+  "${ModID}:Unburdened": {
+    "NAME": "Unburdened",
+    "DESCRIPTION": "Gain !B! Block for each empty Potion Slot you have."
+  }
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "PROPER_NAME": "Grenade",
+    "NAMES": [
+      "Grenade",
+      "grenade",
+      "grenades"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 10 damage to an enemy."
+  },
+  {
+    "PROPER_NAME": "Acid Bomb",
+    "NAMES": [
+      "Acid Bomb",
+      "acid_bomb",
+      "acid_bombs"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 20 damage to an enemy and 10 damage to all other enemies."
+  },
+  {
+    "PROPER_NAME": "Mini-Nuke",
+    "NAMES": [
+      "Mini-nuke",
+      "mini-nuke",
+      "mini-nukes",
+      "nuke",
+      "nukes"
+    ],
+    "DESCRIPTION": "#yPotion NL Deal 30 damage to ALL enemies."
+  }
+]

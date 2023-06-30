@@ -1,13 +1,15 @@
 package thePackmaster;
 
 import basemod.BaseMod;
-import basemod.interfaces.OnPlayerLoseBlockSubscriber;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.*;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.stances.CalmStance;
@@ -20,6 +22,8 @@ import thePackmaster.packs.SpheresPack;
 import thePackmaster.patches._expansionpacks.RelicParentPackExpansionPatches;
 import thePackmaster.patches.overwhelmingpack.MakeRoomPatch;
 import thePackmaster.patches.sneckopack.EnergyCountPatch;
+import thePackmaster.powers.alchemistpack.BombLauncherPower;
+import thePackmaster.powers.alchemistpack.ChemistryPower;
 import thePackmaster.relics.summonspack.BlueSkull;
 import thePackmaster.stances.aggressionpack.AggressionStance;
 import thePackmaster.stances.cthulhupack.NightmareStance;
@@ -29,10 +33,17 @@ import thePackmaster.stances.sentinelpack.Serene;
 
 import java.util.*;
 
+import static thePackmaster.util.Wiz.adp;
 import static thePackmaster.util.Wiz.p;
 
 @SpireInitializer
-public class ExpansionPacks implements PostInitializeSubscriber, OnStartBattleSubscriber, PostBattleSubscriber, OnPlayerLoseBlockSubscriber {
+public class ExpansionPacks implements
+        PostInitializeSubscriber,
+        OnStartBattleSubscriber,
+        PostBattleSubscriber,
+        OnPlayerLoseBlockSubscriber,
+        PostPotionUseSubscriber
+{
 
     private static ExpansionPacks thismod;
     public static final String modID = "expansionPacks";
@@ -113,5 +124,32 @@ public class ExpansionPacks implements PostInitializeSubscriber, OnStartBattleSu
         stances.remove(p().stance.ID);
 
         return useCardRng ? stances.get(AbstractDungeon.cardRandomRng.random(stances.size() - 1)) : stances.get(MathUtils.random(stances.size() - 1));
+    }
+
+    @Override
+    public void receivePostPotionUse(AbstractPotion pot) {
+        AbstractPower chemPow = adp().getPower(ChemistryPower.POWER_ID);
+        AbstractPower bombPow = adp().getPower(BombLauncherPower.POWER_ID);
+
+        if (chemPow != null) {
+            ((ChemistryPower)chemPow).onPotionUse(pot);
+            if (bombPow != null)
+                ((ChemistryPower)chemPow).onPotionUse(pot);
+        }
+
+        if (bombPow != null) {
+            AbstractCreature target = null;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+                if (m.hb.hovered && !m.isDying)
+                    target = m;
+            if (target == null)
+                target = AbstractDungeon.getRandomMonster();
+            ((BombLauncherPower)bombPow).onPotionUse(pot, target);
+        }
+    }
+
+    public static class Enums {
+        @SpireEnum
+        public static AbstractPotion.PotionRarity ALCHEMIST_BOMB;
     }
 }
